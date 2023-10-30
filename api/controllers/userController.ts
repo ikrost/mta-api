@@ -5,21 +5,17 @@ class UserController {
     private Users = [
         { id: 1, name: "John Kennedy", online: false },
     ];
-    // private currentId: number = 1;
 
     getUser(req: Request, res: Response) {
 
         const id: number = parseInt(req.params.id)
-		
-        res.send(this.Users.filter(user => {
-
-            if (user.id == id) {
-                return true
-            }
-
-            return false
-
-        })[0])
+	
+        const user = this.Users.find(user => user.id === id);
+        if (user) {
+            res.send(user);
+        } else {
+            res.status(404).send('User not found');
+        }
 
     }
 
@@ -31,7 +27,7 @@ class UserController {
 
     addUser(req: Request, res: Response) {
 
-        let data = req.body[0]
+        let [data] = req.body
 
         this.Users.push(data)
 		res.status(200).send('OK')
@@ -40,20 +36,14 @@ class UserController {
 
     updateUser(req: Request, res: Response) {
 
-        const data: any[] = req.body[0]
-
+        const id: number = parseInt(req.params.id)
+        const [data] = req.body
+	
+        const user: any = this.Users.find(user => user.id === id)
         for (const property in data) {
-
-            this.Users.filter((user: any) => {
-                
-                const value: any = data[property]
-
-                user[property] = value
-
-            })[0]
-
-        }   
-            
+            user[property] = data[property];
+        } 
+        
         res.status(200).send('OK')
 
     }

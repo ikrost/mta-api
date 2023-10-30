@@ -5,7 +5,7 @@ const app: Application = express();
 const port: number = 3000;
 app.use(express.json());
 
-app.use(midlleWare.checkAuth.bind(midlleWare));
+// app.use(midlleWare.checkAuth.bind(midlleWare));
 
 import { userRouter } from './routes/userRouter'
 app.use("/user", userRouter);
