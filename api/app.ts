@@ -1,11 +1,11 @@
 import express, { Application } from 'express'
-import { midlleWare } from './middleware/middleware';
+import { checkAuth } from './middleware/middleware';
 
 const app: Application = express();
 const port: number = 3000;
 app.use(express.json());
 
-// app.use(midlleWare.checkAuth.bind(midlleWare));
+app.use(checkAuth);
 
 import { userRouter } from './routes/userRouter'
 app.use("/user", userRouter);
