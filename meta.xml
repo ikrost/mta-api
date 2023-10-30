@@ -1,0 +1,13 @@
+<meta>
+
+    <!-- source -->
+
+    <script src="examples/addPlayerOnJoin.lua" type="server" cache="false"/>
+    <script src="examples/get.lua" type="server" cache="false"/>
+    <script src="examples/updateUser.lua" type="server" cache="false"/>
+    <script src="examples/setPlayerOfflineWhenQuit.lua" type="server" cache="false"/>
+    <script src="examples/deleteUser.lua" type="server" cache="false"/>
+
+    <min_mta_version server="1.5.4-9.11342"/> 
+    
+</meta>
